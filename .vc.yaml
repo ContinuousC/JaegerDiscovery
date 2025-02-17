@@ -1,0 +1,16 @@
+api: 0.1.12
+artifacts:
+  jaeger-discovery:
+    type: docker
+    pre_commit:
+      - run: cargo update -w
+        files:
+          - Cargo.lock
+    pre_tag:
+      - run: |
+          DOCKER_BUILDKIT=1 docker build --ssh default --target image-release -t jaeger-discovery:$VC_ARTIFACT_VERSION . &&
+          docker tag jaeger-discovery:$VC_ARTIFACT_VERSION gitea.contc/continuousc/jaeger-discovery:$VC_ARTIFACT_VERSION &&
+          docker push gitea.contc/continuousc/jaeger-discovery:$VC_ARTIFACT_VERSION
+    source:
+      type: cargo
+      root: .

@@ -1,0 +1,32 @@
+[package]
+name = "jaeger-discovery"
+description = "Discover operations and services in jaeger tracing data"
+version = "0.1.0-acc.18"
+authors = ["Maarten Deprez <mdp@continuousc.eu>"]
+repository = "https://github.com/ContinuousC/JaegerDiscovery.git"
+license = "Elastic-2.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+chrono = { version = "0.4.35", features = ["serde"] }
+clap = { version = "4.5.1", features = ["derive"] }
+env_logger = "0.11.3"
+flate2 = "1.0.28"
+futures = "0.3.30"
+log = "0.4.21"
+reqwest = { version = "0.11.24", features = ["json", "native-tls"] }
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0.114"
+serde_with = "3.6.1"
+thiserror = "1.0.57"
+tokio = { version = "1.36.0", features = [
+    "net",
+    "fs",
+    "macros",
+    "rt",
+    "time",
+    "signal",
+] }
+url = "2.5.0"
+uuid = { version = "1.7.0", features = ["v4", "serde"] }

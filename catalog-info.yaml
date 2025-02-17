@@ -1,0 +1,24 @@
+################################################################################
+# Copyright ContinuousC. Licensed under the "Elastic License 2.0".             #
+################################################################################
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: continuousc-jaeger
+  description: ContinuousC Jaeger
+spec:
+  owner: developers
+  domain: continuousc
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jaeger-discovery
+spec:
+  type: service
+  owner: developers
+  system: continuousc-jaeger
+  lifecycle: development
+  consumesApi:
+    - relation-graph-api
